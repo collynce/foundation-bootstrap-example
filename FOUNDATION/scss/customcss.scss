@@ -1,0 +1,87 @@
+$primaryColor: #444;
+$secondaryColor: rgba(23, 221, 162, 0.644);
+
+@mixin transitionOut {
+  transition: all 0.8s ease-in-out;
+}
+
+@function changeColor($color) {
+  @if (lightness($color) < 40) {
+    @return #fff;
+  } @else {
+    @return #000;
+  }
+}
+
+%shared_styles {
+  &:nth-child(n) {
+    background: $primaryColor;
+    border-color: $primaryColor;
+    border-radius: 5px;
+    color: changeColor($primaryColor);
+    &:hover {
+      @include transitionOut;
+      background-color: darken($secondaryColor, 10);
+    }
+  }
+}
+
+body {
+  background: lighten($primaryColor, 15);
+  color: changeColor($primaryColor);
+}
+
+.card {
+  background: $primaryColor;
+  border-color: $secondaryColor;
+  border-radius: 5px;
+  .card-divider {
+    background: darken($secondaryColor, 10);
+  }
+}
+
+.top-bar {
+  background: darken($secondaryColor, 10);
+  div {
+    ul {
+      background: inherit;
+      li a {
+        color: changeColor($primaryColor);
+        &:hover {
+          @include transitionOut;
+          background: lighten($primaryColor, 8);
+        }
+        ul li a {
+          background: inherit;
+          &:hover {
+            @include transitionOut;
+            background: lighten($primaryColor, 8);
+          }
+        }
+      }
+    }
+  }
+  .top-bar-left {
+  }
+}
+div {
+  table {
+    thead tr {
+      @extend %shared_styles;
+    }
+    tbody tr {
+      @extend %shared_styles;
+    }
+  }
+}
+.button-group {
+  // margin: 10px 100px;
+
+  padding: 0;
+  a:nth-child(n) {
+    // margin: 0 10px;
+    background: inherit;
+    border-color: darken($secondaryColor, 8);
+    @extend %shared_styles;
+  }
+}

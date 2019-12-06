@@ -1,0 +1,47 @@
+body {
+  background: #6a6a6a;
+  color: #fff;
+}
+
+hr {
+  border-color: rgba(19, 184, 135, 0.644);
+}
+
+#table_container table tbody tr:nth-child(n):hover, #table_container table thead:nth-child(n):hover {
+  transition: all 0.8s ease-in-out;
+  background-color: rgba(18, 175, 128, 0.644);
+}
+
+#table_container table {
+  color: #fff;
+}
+.card {
+  background: #444;
+  border-radius: 5px;
+}
+.card .card-header {
+  background: rgba(18, 175, 128, 0.644);
+}
+
+.d-flex button {
+  transition: all 0.8s ease-in-out;
+  background-color: inherit;
+  border-color: rgba(23, 221, 162, 0.644);
+  color: #fff;
+}
+.d-flex button:hover {
+  background-color: rgba(21, 198, 145, 0.644);
+}
+
+.navbar {
+  background-color: rgba(18, 175, 128, 0.644);
+}
+.navbar a {
+  color: #fff;
+}
+.navbar a:hover {
+  transition: all 0.8s ease-in-out;
+  color: #0b2e13;
+}
+
+/*# sourceMappingURL=style.css.map */

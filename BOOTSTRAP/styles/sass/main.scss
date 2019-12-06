@@ -1,0 +1,74 @@
+$primaryColor: #444;
+$secondaryColor: rgba(23, 221, 162, 0.644);;
+
+@mixin transitionOut {
+  transition: all 0.8s ease-in-out;
+}
+
+@function changeColor($color){
+  @if (lightness($color) < 40){
+    @return #fff;
+  }@else{
+    @return #000;
+  }
+}
+
+body{
+  background: lighten($primaryColor, 15);
+  color: changeColor($primaryColor);
+}
+
+hr{
+  border-color: darken($secondaryColor, 8);
+}
+
+%shared_styles{
+  &:nth-child(n){
+    &:hover{
+      @include transitionOut;
+      background-color: darken($secondaryColor, 10);
+    }
+  }
+}
+#table_container{
+  table{
+    color: changeColor($primaryColor);
+    thead{
+      @extend %shared_styles;
+    }
+    tbody{
+      tr{
+        @extend %shared_styles;
+      }
+    }
+  }
+}
+.card{
+  background: $primaryColor;
+  border-radius: 5px;
+  .card-header{
+    background: darken($secondaryColor, 10);
+  }
+}
+.d-flex{
+  button{
+    @include transitionOut;
+    background-color: inherit;
+    border-color: $secondaryColor;
+    color: changeColor($primaryColor);
+    &:hover{
+      background-color: darken($secondaryColor, 5);
+    }
+  }
+}
+.navbar{
+  background-color: darken($secondaryColor, 10);
+  a{
+    color: changeColor($primaryColor);
+    &:hover{
+      @include transitionOut;
+      color: #0b2e13;
+
+    }
+  }
+}
